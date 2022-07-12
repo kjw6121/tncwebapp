@@ -1,26 +1,28 @@
-<!doctype html>
 <html>
 <head>
 <meta name="viewport" content="width=320; user-scalable=no" />
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <title>Camera</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="/jquery/jquery.js"></script>
 
+<script>
+$(document).ready(function(){
+    if (!('url' in window) && ('webkitURL' in window)) {
+        window.URL = window.webkitURL;
+    }
+
+    $('#camera').change(function(e){
+        $('#pic').attr('src', URL.createObjectURL(e.target.files[0]));
+    });
+});
+</script>
 </head>
 
 <body>
     <input type="file" id="camera" name="camera" capture="camera" accept="image/*" />
     <br />
 
-    <img id="frame" style="width:100%;" />
-    <script>
-        var camera = document.getElementById('camera');
-        var frame = document.getElementById('frame');
-
-        camera.addEventListener('chane', function(e) {
-            var file = e.target.file[0];
-            // do something whith the image file
-            frame.src = URL.createObjectURL(file);
-        });
-    </script>
+    <img id="pic" style="width:100%;" />
 </body>
 </html>
