@@ -1,26 +1,28 @@
+<!doctype html>
 <html>
-    <head>
-        <title>tnc first webapp</title>
-    </head>
-    <body>
-        <form id="my_form">
-            <label for="name">이름 </label>
-            <input type="text" 
-                   id="name" name="name"
-                   autocomplete="off">
-            <br><br>
-            <label for="sex">성별 </label>
-            <input type="text" 
-                   id="sex" name="sex"
-                   autocomplete="off">
-            <br><br>
-            <label for="town">지역 </label>
-            <input type="text" 
-                   id="town" name="town"
-                   autocomplete="off">
-            <br><br>
-            <button>완료</button>
-          </form>
-        <script type="text/javascript" src="kittenbook.js"></script>
-    </body>
+<head>
+<meta name="viewport" content="width=320; user-scalable=no" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>Camera</title>
+<script src="/jquery/jquery.js"></script>
+
+<script>
+$(document).ready(function(){
+    if (!('url' in window) && ('webkitURL' in window)) {
+        window.URL = window.webkitURL;
+    }
+
+    $('#camera').change(function(e){
+        $('#pic').attr('src', URL.createObjectURL(e.target.files[0]));
+    });
+});
+</script>
+</head>
+
+<body>
+    <input type="file" id="camera" name="camera" capture="camera" accept="image/*" />
+    <br />
+
+    <img id="pic" style="width:100%;" />
+</body>
 </html>
