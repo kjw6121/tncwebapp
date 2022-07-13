@@ -1,8 +1,23 @@
 <?php
+    $serverName = "technetdb.czo9ia0scsp3.ap-northeast-2.rds.amazonaws.com";
+    $connectionOptions = array(
+        "database" => "technetdbver2",
+        "uid" => "kim_jinwoo",
+        "pwd" => "technet4111",
+        "TrustServerCertificate" => "yes",
+    );
+    
+    function exception_handler($exception) {
+        echo "<h1>Failure</h1>";
+        echo "Uncaught exception: " , $exception->getMessage();
+        echo "<h1>PHP Info for troubleshooting</h1>";
+        phpinfo();
+    }
+    
+    set_exception_handler('exception_handler');
+    
     // Establishes the connection
-    $conn = sqlsrv_connect("technetdb.czo9ia0scsp3.ap-northeast-2.rds.amazonaws.com", "database" => "technetdbver2", "uid" => "kim_jinwoo",
-    "pwd" => "technet4111",
-    "TrustServerCertificate" => "yes");
+    $conn = sqlsrv_connect($serverName, $connectionOptions);
     if ($conn === false) {
         die(formatErrors(sqlsrv_errors()));
     }
