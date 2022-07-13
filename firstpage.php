@@ -41,7 +41,7 @@
     while ($board = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
         echo $board['SN']." SN: ";
         echo $board['품번']." 품번: ";
-        echo $board['수량']." 수량: " PHP_EOL;
+        echo $board['수량']." 수량: " ;
     }
 
     sqlsrv_free_stmt($stmt);
