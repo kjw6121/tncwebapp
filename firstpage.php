@@ -39,7 +39,9 @@
 
 <?php
     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        echo $row['SN'] . $row['품번'] . $row['수량'] . PHP_EOL;
+        echo $row['SN']." SN: ";
+             $row['품번']." 품번: ";
+             $row['수량']." 수량: " PHP_EOL;
     }
 
     sqlsrv_free_stmt($stmt);
