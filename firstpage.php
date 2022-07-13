@@ -23,7 +23,7 @@
     }
 
     // Select Query
-    $tsql = "SELECT SN, 품번, 수량  FROM BHsch74 WHERE SN=100000";
+    $tsql = "SELECT SN, 품번, 수량  FROM BHsch74";
 
 
     // Executes the query
