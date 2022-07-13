@@ -39,9 +39,9 @@
 
 <?php
     while ($board = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        echo " SN: ".$board['SN'];
-        echo " 품번: ".$board['품번'];
-        echo " 수량: ".$board['수량'];
+        echo " SN: ".$board['SN']."<br>"
+        ." 품번: ".$board['품번']."<br>"
+        ." 수량: ".$board['수량'];
     }
 
     sqlsrv_free_stmt($stmt);
