@@ -34,15 +34,21 @@
         die(formatErrors(sqlsrv_errors()));
     }
 ?>
-
+<body>
 <h1> Success Results : </h1>
 
 <?php
-    while ($board = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        echo " SN: ".$board['SN']."<br>"
-        ." 품번: ".$board['품번']."<br>"
-        ." 수량: ".$board['수량']."<br>";
+      echo '<table class="text-center"><tr>' .
+      '<th>SN</th><th>품번</th>' .
+      '</tr>';
+
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        echo '<tr><td>' . $row['SN']. '</td>' .
+            '<td>' . $row['품번']. '</td>' .
+            '<td>' . $row['수량'].'</td></tr>';
     }
+        echo '</table>';
+        
 
     sqlsrv_free_stmt($stmt);
     sqlsrv_close($conn);
