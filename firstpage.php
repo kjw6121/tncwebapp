@@ -39,7 +39,7 @@
     <title>74스케쥴</title>
     <style>
             table {
-            width: 50%;
+            width: 30%;
             border: 1px solid #444444;
             border-collapse: collapse;
         }
@@ -52,7 +52,7 @@
 
 
 <body>
-<h1> Success Results : </h1>
+<h1> 74line 스케쥴 : </h1>
 
 <?php
       echo '<table class="text-center"><tr>' .
