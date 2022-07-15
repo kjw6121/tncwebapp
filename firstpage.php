@@ -23,7 +23,7 @@
     }
 
     // Select Query
-    $tsql = "SELECT SN, 품번, 수량  FROM BHsch74";
+    $tsql = "exec phptest";
 
 
     // Executes the query
