@@ -38,9 +38,15 @@
     <meta charset="utf-8">
     <title>74스케쥴</title>
     <style>
-      table {
-        width: 100%;
-      }
+            table {
+            width: 50%;
+            border: 1px solid #444444;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #444444;
+            padding: 10px;
+        }
     </style>
   </head>
 
