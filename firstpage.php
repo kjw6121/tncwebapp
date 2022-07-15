@@ -37,33 +37,35 @@
 
 <h1> Success Results : </h1>
 <table>
-    <tr>
+<tr>
         <th>SN</th>
         <th>품번</th>
-        <th>수량</수량>
+        <th>수량</th>
 </tr>
 <tr>
     <td>
-<?php
-    while ($board = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        echo $board['SN'];
-    }
+        <?php
+            while ($board = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+                echo $board['SN'];
+            }
 
-    sqlsrv_free_stmt($stmt);
-    sqlsrv_close($conn);
+            sqlsrv_free_stmt($stmt);
+            sqlsrv_close($conn);
 
-?> </td>
+        ?> 
+    </td>
 
-<td>
-<?php
-    while ($board = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        echo $board['품번'];
-    }
+    <td>
+    <?php
+        while ($board = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+            echo $board['품번'];
+        }
 
-    sqlsrv_free_stmt($stmt);
-    sqlsrv_close($conn);
+        sqlsrv_free_stmt($stmt);
+        sqlsrv_close($conn);
 
-?> </td>
+    ?>
+    </td>
 
 
 <td>
