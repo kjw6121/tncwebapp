@@ -36,50 +36,27 @@
 ?>
 
 <h1> Success Results : </h1>
-<table>
-<tr>
-        <th>SN</th>
-        <th>품번</th>
-        <th>수량</th>
-</tr>
-<tr>
-    <td>
-        <?php
-            while ($board = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-                echo $board['SN'];
-            }
 
-            sqlsrv_free_stmt($stmt);
-            sqlsrv_close($conn);
-
-        ?> 
-    </td>
-
-    <td>
-    <?php
-        while ($board = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-            echo $board['품번'];
-        }
-
-        sqlsrv_free_stmt($stmt);
-        sqlsrv_close($conn);
-
-    ?>
-    </td>
-
-
-<td>
 <?php
     while ($board = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        echo $board['수량'];
+        echo " SN: ".$board['SN']."<br>"
+        ." 품번: ".$board['품번']."<br>"
+        ." 수량: ".$board['수량']."<br>";
     }
 
     sqlsrv_free_stmt($stmt);
     sqlsrv_close($conn);
 
-?> </td>
-</tr>
-<?php endforeach; ?>
-</table>
-
+    function formatErrors($errors)
+    {
+        // Display errors
+        echo "<h1>SQL Error:</h1>";
+        echo "Error information: <br/>";
+        foreach ($errors as $error) {
+            echo "SQLSTATE: ". $error['SQLSTATE'] . "<br/>";
+            echo "Code: ". $error['code'] . "<br/>";
+            echo "Message: ". $error['message'] . "<br/>";
+        }
+    }
+?>
                   
