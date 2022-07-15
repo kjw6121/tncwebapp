@@ -34,6 +34,17 @@
         die(formatErrors(sqlsrv_errors()));
     }
 ?>
+<head>
+    <meta charset="utf-8">
+    <title>74스케쥴</title>
+    <style>
+      table {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+
 <body>
 <h1> Success Results : </h1>
 
