@@ -46,9 +46,20 @@
     // Executes the query
     $stmt = sqlsrv_query($conn, $tsql);
     $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+       
+      //결과가 존재하면 세션 생성
+      if ($row != null) {
+         $_SESSION['username'] = $row['사용자ID'];
+         $_SESSION['name'] = $row['성명'];
+         echo "<script>location.replace('index.php');</script>";
+         exit;
+      }
       
-    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-      echo '<tr><td>' . $row['사용자ID']. '</td>' .
-          '<td>' . $row['성명']. '</td>''</tr>';
-  }
-  ?>
+      //결과가 존재하지 않으면 로그인 실패
+      if($row == null){
+         echo "<script>alert('Invalid username or password')</script>";
+         echo "<script>location.replace('login.php');</script>";
+         exit;
+      }
+      ?>
+   </body>
