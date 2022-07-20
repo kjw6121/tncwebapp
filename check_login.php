@@ -45,24 +45,16 @@
 
     // Executes the query
     $result = sqlsrv_query($conn, $tsql);
-    $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+    $row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC);
 
     
 #checks if the search was made
 if($result === false){
    die( print_r( sqlsrv_errors(), true));
 }
-
-#checks if the search brought some row and if it is one only row
-if(sqlsrv_has_rows($result) != 1){
-     echo "User/password not found";
-}else{
-
-
-
        
       //결과가 존재하지 않으면 로그인 실패
-      if(sqlsrv_has_rows($result) != 1){
+      if($row != 1){
          echo "<script>alert('Invalid username or password')</script>";
          echo "<script>location.replace('login.php');</script>";
          exit;
