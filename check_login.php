@@ -23,17 +23,6 @@
         die(formatErrors(sqlsrv_errors()));
     }
 
-    // Select Query
-    $tsql = "select 사용자ID, pw from 담당자";
-
-
-    // Executes the query
-    $stmt = sqlsrv_query($conn, $tsql);
-
-    // Error handling
-    if ($stmt === false) {
-        die(formatErrors(sqlsrv_errors()));
-    }
 ?>
 
 <html>
