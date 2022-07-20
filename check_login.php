@@ -45,14 +45,7 @@
 
     // Executes the query
     $stmt = sqlsrv_query($conn, $tsql);
-
-
-    // Error handling
-    if ($stmt === false) {
-      die(formatErrors(sqlsrv_errors()));
-  }
-
-      $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+    $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
       
       //결과가 존재하면 세션 생성
       if ($row != null) {
