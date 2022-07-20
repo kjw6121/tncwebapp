@@ -45,25 +45,21 @@
 
     // Executes the query
     $result = sqlsrv_query($conn, $tsql);
-    $row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC);
+    $row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)
 
     
-#checks if the search was made
-if($result === false){
-   die( print_r( sqlsrv_errors(), true));
-}
-       
       //결과가 존재하지 않으면 로그인 실패
-      if($row != 1){
-         echo "<script>alert('Invalid username or password')</script>";
-         echo "<script>location.replace('login.php');</script>";
+      if($result !== null)
+            {
+         $_SESSION['username'] = $row['사용자ID'];
+         $_SESSION['name'] = $row['성명'];
+         echo "<script>location.replace('index.php');</script>";
          exit;
       }
       else
       {
-         $_SESSION['username'] = $row['사용자ID'];
-         $_SESSION['name'] = $row['성명'];
-         echo "<script>location.replace('index.php');</script>";
+         echo "<script>alert('Invalid username or password')</script>";
+         echo "<script>location.replace('login.php');</script>";
          exit;
       }
       ?>
