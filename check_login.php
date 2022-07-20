@@ -56,7 +56,7 @@
       
       //결과가 존재하면 세션 생성
       if ($row != null) {
-         $_SESSION['username'] = $row['사용자id'];
+         $_SESSION['username'] = $row['사용자ID'];
          $_SESSION['userpass'] = $row['pw'];
          echo "<script>location.replace('index.php');</script>";
          exit;
