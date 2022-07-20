@@ -43,7 +43,7 @@
     $tsql = "SELECT 사용자ID, pw FROM 담당자 WHERE 사용자ID = '$username' AND pw = '$userpass'";
 
 
-      $result = $mysqli->query($q);
+      $result = $tsql->query($q);
       $row = $result->fetch_array(MYSQLI_ASSOC);
       
       //결과가 존재하면 세션 생성
