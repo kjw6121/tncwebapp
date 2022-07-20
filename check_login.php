@@ -43,13 +43,21 @@
     $tsql = "SELECT 사용자ID, pw FROM 담당자 WHERE 사용자ID = '$username' AND pw = '$userpass'";
 
 
-      $result = $tsql->query($q);
-      $row = $result->fetch_array(MYSQLI_ASSOC);
+    // Executes the query
+    $stmt = sqlsrv_query($conn, $tsql);
+
+
+    // Error handling
+    if ($stmt === false) {
+      die(formatErrors(sqlsrv_errors()));
+  }
+
+      $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
       
       //결과가 존재하면 세션 생성
       if ($row != null) {
-         $_SESSION['username'] = $row['id'];
-         $_SESSION['name'] = $row['name'];
+         $_SESSION['username'] = $row['사용자id'];
+         $_SESSION['userpass'] = $row['pw'];
          echo "<script>location.replace('index.php');</script>";
          exit;
       }
