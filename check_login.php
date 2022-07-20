@@ -45,6 +45,7 @@
 
     // Executes the query
     $result = sqlsrv_query($conn, $tsql);
+    $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
 
     
 #checks if the search was made
