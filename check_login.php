@@ -22,18 +22,6 @@
     if ($conn === false) {
         die(formatErrors(sqlsrv_errors()));
     }
-
-    // Select Query
-    $tsql = "SELECT SN, 품번, 수량  FROM BHsch74";
-
-
-    // Executes the query
-    $stmt = sqlsrv_query($conn, $tsql);
-
-    // Error handling
-    if ($stmt === false) {
-        die(formatErrors(sqlsrv_errors()));
-    }
    
       //login.php에서 입력받은 id, password
       $username = $_POST['id'];
@@ -42,6 +30,8 @@
       $tsql = "SELECT 사용자ID, 성명 FROM 담당자 WHERE 사용자ID = '$username' AND pw = '$userpass'";
       $stmt = sqlsrv_query($conn, $tsql);
       $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+  
+
       
       //결과가 존재하면 세션 생성
       if ($row != null) {
