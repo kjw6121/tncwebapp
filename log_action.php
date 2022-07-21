@@ -32,8 +32,7 @@
 <?php
       
     while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        echo . $row['사용자ID']. 
-        echo . $row['성명'].;
+        echo . $row['사용자ID'];
 
 
     sqlsrv_free_stmt($stmt);
