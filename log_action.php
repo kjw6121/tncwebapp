@@ -17,10 +17,6 @@ $conn = sqlsrv_connect( $serverName, $connectionInfo);
 ?>
 
 <?php
-function ReadData()
-{
-    try
-    {
         $conn = OpenConnection();
         $tsql = "SELECT 성명 FROM 담당자 WHERE 사용자ID='KJW' AND pw='1113'";
         $getProducts = sqlsrv_query($conn, $tsql);
@@ -35,10 +31,9 @@ function ReadData()
         }
         sqlsrv_free_stmt($getProducts);
         sqlsrv_close($conn);
-    }
+
     catch(Exception $e)
     {
         echo("Error!");
     }
-}
 ?>
