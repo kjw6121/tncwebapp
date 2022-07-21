@@ -16,20 +16,54 @@ $conn = sqlsrv_connect( $serverName, $connectionInfo);
  }
 ?>
 
-<?php
-        $conn = OpenConnection();
-        $tsql = "SELECT 성명 FROM 담당자 WHERE 사용자ID='KJW' AND pw='1113'";
-        $getProducts = sqlsrv_query($conn, $tsql);
-        if ($getProducts == FALSE)
-            die(FormatErrors(sqlsrv_errors()));
-        $productCount = 0;
-        while($row = sqlsrv_fetch_array($getProducts, SQLSRV_FETCH_ASSOC))
-        {
-            echo($row['성명']);
-            echo("<br/>");
-            $productCount++;
+      
+        <head>
+        <meta charset="utf-8">
+        <title>74스케쥴</title>
+        <style>
+                table {
+                width: 30%;
+                border: 1px solid #444444;
+                border-collapse: collapse;
+            }
+            th, td {
+                border: 1px solid #444444;
+                padding: 10px;
+            }
+        </style>
+      </head>
+    
+    
+    <body>
+    <h1> 74line 스케쥴 : </h1>
+    
+    <?php
+      $conn = OpenConnection();
+      
+          echo '<table class="text-center"><tr>' .
+          '<th>SN</th><th>품번</th><th>수량</th>' .
+          '</tr>';
+    
+        while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+            echo '<tr><td>' . $row['SN']. '</td>' .
+                '<td>' . $row['품번']. '</td>' .
+                '<td>' . $row['수량'].'</td></tr>';
         }
-        sqlsrv_free_stmt($getProducts);
+            echo '</table>';
+    
+    
+        sqlsrv_free_stmt($stmt);
         sqlsrv_close($conn);
-
-?>
+    
+        function formatErrors($errors)
+        {
+            // Display errors
+            echo "<h1>SQL Error:</h1>";
+            echo "Error information: <br/>";
+            foreach ($errors as $error) {
+                echo "SQLSTATE: ". $error['SQLSTATE'] . "<br/>";
+                echo "Code: ". $error['code'] . "<br/>";
+                echo "Message: ". $error['message'] . "<br/>";
+            }
+        }
+    ?>
