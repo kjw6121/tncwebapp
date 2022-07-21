@@ -15,8 +15,8 @@ if( $conn === false){
 $username = $_REQUEST['uNm'];
 $password  = $_REQUEST['uPw'];
 $tsql = "SELECT * FROM 담당자 WHERE 사용자ID='$username' AND pw='$password'";
-$stmt = sqlsrv_query( $conn, $tsql, array(), array( "Scrollable" => SQLSRV_CURSOR_KEYSET ));
-if(sqlsrv_has_rows(resource $stmt) == true){
+$stmt = sqlsrv_query( $conn, $tsql);
+if(!sqlsrv_fetch($stmt)){
     $_SESSION['valid_user'] = true;
     $_SESSION['uNm'] = $username;
     header('Location: index.php');
