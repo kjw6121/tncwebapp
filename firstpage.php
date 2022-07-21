@@ -14,7 +14,7 @@
     }
 
     // Select Query
-    $tsql = "SELECT 사용자ID FROM 담당자 WHERE 사용자ID = 'KJW' AND pw = '1113'";
+    $tsql = "SELECT 성명, 사용자ID FROM 담당자 WHERE 사용자ID = 'KJW' AND pw = '1113'";
 
 
     // Executes the query
@@ -48,7 +48,7 @@
 <?php
       
     $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC); 
-        echo $row['사용자ID'];
+        echo $row['사용자ID']. $row['성명'];
     
       
 
