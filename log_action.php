@@ -32,8 +32,4 @@ $conn = sqlsrv_connect( $serverName, $connectionInfo);
         sqlsrv_free_stmt($getProducts);
         sqlsrv_close($conn);
 
-    catch(Exception $e)
-    {
-        echo("Error!");
-    }
 ?>
