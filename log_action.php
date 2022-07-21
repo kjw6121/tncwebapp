@@ -22,7 +22,7 @@ function ReadData()
     try
     {
         $conn = OpenConnection();
-        $tsql = "SELECT 성명 FROM 담당자 WHERE 사용자ID='$username' AND pw='$password'";
+        $tsql = "SELECT 성명 FROM 담당자 WHERE 사용자ID='KJW' AND pw='1113'";
         $getProducts = sqlsrv_query($conn, $tsql);
         if ($getProducts == FALSE)
             die(FormatErrors(sqlsrv_errors()));
