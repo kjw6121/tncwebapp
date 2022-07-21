@@ -6,16 +6,7 @@
         "pwd" => "technet4111",
         "TrustServerCertificate" => "yes",
     );
-    
-    function exception_handler($exception) {
-        echo "<h1>Failure</h1>";
-        echo "Uncaught exception: " , $exception->getMessage();
-        echo "<h1>PHP Info for troubleshooting</h1>";
-        phpinfo();
-    }
-    
-    set_exception_handler('exception_handler');
-    
+        
     // Establishes the connection
     $conn = sqlsrv_connect($serverName, $connectionOptions);
     if ($conn === false) {
@@ -23,7 +14,7 @@
     }
 
     // Select Query
-    $tsql = "exec phptest";
+    $tsql = "SELECT SN, 품번, 수량  FROM BHsch74";
 
 
     // Executes the query
@@ -81,5 +72,10 @@
             echo "Message: ". $error['message'] . "<br/>";
         }
     }
+    
+
 ?>
+
+</body>
+
                   
