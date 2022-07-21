@@ -32,7 +32,7 @@
       $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
         
       //결과가 존재하면 세션 생성
-      if ($row == $username) {
+      if ($row != $username) {
          $_SESSION['username'] = $row['사용자ID'];
          $_SESSION['name'] = $row['사용자ID'];
          echo "<script>location.replace('index.php');</script>";
@@ -41,17 +41,6 @@
       sqlsrv_close($conn);
          exit;
       }
-      else
-      //결과가 존재하지 않으면 로그인 실패
-      {
-         echo "<script>alert('Invalid username or password')</script>";
-         echo "<script>location.replace('login.php');</script>";
-         
-      sqlsrv_free_stmt($stmt);
-      sqlsrv_close($conn);
-         exit;
-      }
-
 
 ?>
    </body>
