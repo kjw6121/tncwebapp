@@ -14,7 +14,7 @@
     }
 
     // Select Query
-    $tsql = "SELECT SN, 품번, 수량  FROM BHsch74";
+    $tsql = "SELECT 사용자ID FROM 담당자 WHERE 사용자ID = 'KJW' AND pw = '1113'";
 
 
     // Executes the query
@@ -46,16 +46,11 @@
 <h1> 74line 스케쥴 : </h1>
 
 <?php
-      echo '<table class="text-center"><tr>' .
-      '<th>SN</th><th>품번</th><th>수량</th>' .
-      '</tr>';
-
-    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        echo '<tr><td>' . $row['SN']. '</td>' .
-            '<td>' . $row['품번']. '</td>' .
-            '<td>' . $row['수량'].'</td></tr>';
+      
+    $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC) {
+        echo $row['사용자ID'];
     }
-        echo '</table>';
+      
 
 
     sqlsrv_free_stmt($stmt);
