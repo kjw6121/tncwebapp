@@ -1,6 +1,4 @@
 <?php
-function OpenConnection()
-{
     $serverName = "technetdb.czo9ia0scsp3.ap-northeast-2.rds.amazonaws.com";
     $connectionOptions = array(
         "database" => "technetdbver2",
@@ -8,35 +6,54 @@ function OpenConnection()
         "pwd" => "technet4111",
         "TrustServerCertificate" => "yes",
     );
+        
+    // Establishes the connection
     $conn = sqlsrv_connect($serverName, $connectionOptions);
-    if($conn == false)
-        die(FormatErrors(sqlsrv_errors()));
+    if ($conn === false) {
+        die(formatErrors(sqlsrv_errors()));
+    }
 
-    return $conn;
-}
+    // Select Query
+    $tsql = "SELECT 사용자ID, 성명 FROM 담당자  WHERE 사용자ID='$username' AND pw='$password'";
 
-function ReadData()
-    {
-        try
-        {
-            $conn = OpenConnection();
-            $tsql = "exec phptest";
-            $getProducts = sqlsrv_query($conn, $tsql);
-            if ($getProducts == FALSE)
-                die(FormatErrors(sqlsrv_errors()));
-            $productCount = 0;
-            while($row = sqlsrv_fetch_array($getProducts, SQLSRV_FETCH_ASSOC))
-            {
-                echo($row['품번']);
-                echo("<br/>");
-                $productCount++;
-            }
-            sqlsrv_free_stmt($getProducts);
-            sqlsrv_close($conn);
-        }
-        catch(Exception $e)
-        {
-            echo("Error!");
-        }
+
+    // Executes the query
+    $stmt = sqlsrv_query($conn, $tsql);
+
+    // Error handling
+    if ($stmt === false) {
+        die(formatErrors(sqlsrv_errors()));
     }
 ?>
+
+<body>
+
+
+<?php
+      
+    while ($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        echo . $row['사용자ID']. 
+        echo . $row['성명'].;
+
+
+    sqlsrv_free_stmt($stmt);
+    sqlsrv_close($conn);
+
+    function formatErrors($errors)
+    {
+        // Display errors
+        echo "<h1>SQL Error:</h1>";
+        echo "Error information: <br/>";
+        foreach ($errors as $error) {
+            echo "SQLSTATE: ". $error['SQLSTATE'] . "<br/>";
+            echo "Code: ". $error['code'] . "<br/>";
+            echo "Message: ". $error['message'] . "<br/>";
+        }
+    }
+    
+
+?>
+
+</body>
+
+                  
